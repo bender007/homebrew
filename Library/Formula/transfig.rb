@@ -20,6 +20,9 @@ class Transfig < Formula
     # transfig does not like to execute makefiles in parallel
     ENV.deparallelize
 
+    system "env"
+#    Process.exit
+
     # patch file attributes of fig2dev/test.ps
     system "chmod u+rw fig2dev/test.ps"
     # patch file attributes of fig2dev/dev files
@@ -60,7 +63,7 @@ class Transfig < Formula
     system "make Makefiles"
 
     # build everything
-    system "make"
+    system "make CC=#{ENV.compiler}"
 
     # install everything
     system "make install"

@@ -73,7 +73,7 @@ class Xfig < Formula
     end
 
     # build xfig
-    system "make"
+    system "make CC=#{ENV.compiler}"
 
     # patch Makefile to avoid building symlink /usr/local/X11/app-defaults
     inreplace "Makefile", "	  $(LN) $${RELPATH}$(CONFDIR)/app-defaults .;", "	  "
